@@ -1,13 +1,13 @@
-package com.cts.company;
+//package com.cts.company;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class EstockmarketCompanyApplicationTests {
+//@SpringBootTest
+//class EstockmarketCompanyApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	//@Test
+	//void contextLoads() {
+	//}
 
-}
+//}

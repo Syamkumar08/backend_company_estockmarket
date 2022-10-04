@@ -37,17 +37,23 @@ public class CompanyServiceImpl implements CompanyService {
                     if (savedCompany != null) {
                         companySaveResponse.setMessage("Company saved successfully!!");
                         companySaveResponse.setCompany(savedCompany);
+                        companySaveResponse.setStatus(HttpStatus.OK.toString());
                     } else {
                         companySaveResponse.setMessage("Company not saved successfully!!");
+                        companySaveResponse.setCompany(company);
+                        companySaveResponse.setStatus(HttpStatus.NOT_ACCEPTABLE.toString());
                     }
                 } else {
                     companySaveResponse.setMessage("Company Turnover must be greater than 10cr");
+                    companySaveResponse.setCompany(company);
+                    companySaveResponse.setStatus(HttpStatus.NOT_ACCEPTABLE.toString());
                 }
             } else {
                 companySaveResponse.setMessage("Company already exists");
-
+                companySaveResponse.setCompany(company);
+                companySaveResponse.setStatus(HttpStatus.NOT_ACCEPTABLE.toString());
             }
-            companySaveResponse.setStatus(HttpStatus.OK.toString());
+           
             companySaveResponse.setHttpstatus(HttpStatus.OK);
         } catch (Exception ex) {
             companySaveResponse.setStatus(HttpStatus.BAD_REQUEST.toString());

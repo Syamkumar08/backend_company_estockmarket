@@ -3,6 +3,7 @@ package com.cts.company.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,14 +19,15 @@ import com.cts.company.repository.CompanyRepository;
 import com.cts.company.response.CompanySaveResponse;
 import com.cts.company.response.CompanyStockResponse;
 import com.cts.company.service.CompanyService;
+import com.cts.stock.dto.CompanyResponseDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 @Slf4j
 @RestController
 @RequestMapping("/api/v1.0/market/company")
-public class CompController {
+public class CompanyController {
 
     @Autowired
     private CompanyService companyService;
@@ -45,7 +47,13 @@ public class CompController {
         return companyService.getCompanyWithStock(companyCode);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/companyInfo/{company_code}")
+    public ResponseEntity<CompanyResponseDTO> getCompany(@PathVariable("company_code") String companyCode) {
+        CompanyResponseDTO<Company> companyResponseDTO=companyService.getCompany(companyCode);
+
+        return new ResponseEntity<>(companyResponseDTO, HttpStatus.OK);
+    }
+    @GetMapping("/getAll")
     public List<Company> getAllCompanyDetails() {
         return companyRepository.findAll();
     }

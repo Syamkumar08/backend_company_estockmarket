@@ -1,13 +1,13 @@
 package com.cts.company.response;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
-public class Stock {
+public class StockResponseDTO {
     private Long id;
 
     private long stockcode;

@@ -12,6 +12,6 @@ public class CompanyStockResponse extends AbstractResponse {
 
     private Company company;
 
-    private Stock stock;
+    private StockResponseDTO stock;
 
 }

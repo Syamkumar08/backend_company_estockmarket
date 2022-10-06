@@ -104,7 +104,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = companyRepository.findByCompanyCode(companyCode);
         if (company != null) {
             companyRepository.delete(company);
-            restTemplate.delete("https://stockestockmarket.azurewebsites.net/api/v1.0/market/stock/delete" + companyCode);
+            restTemplate.delete("https://stockestockmarket.azurewebsites.net/api/v1.0/market/stock/delete/" + companyCode);
         }
     }
 

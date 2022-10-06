@@ -68,7 +68,7 @@ public class CompanyServiceImpl implements CompanyService {
         CompanyStockResponse companyStockResponse = new CompanyStockResponse();
         if (company != null) {
             StockResponseDTO stock = restTemplate.getForObject(
-                    "http://localhost:8085/api/v1.0/market/stock/get/stockPrice/" + companyCode,
+                    "https://stockestockmarket.azurewebsites.net/api/v1.0/market/stock/get/stockPrice/" + companyCode,
                     StockResponseDTO.class);
             companyStockResponse.setCompany(company);
             companyStockResponse.setStock(stock);
@@ -85,7 +85,7 @@ public class CompanyServiceImpl implements CompanyService {
             CompanyStockResponse companyStock = new CompanyStockResponse();
             companyStock.setCompany(company);
             ResponseEntity<StockResponse> stockResponse = restTemplate.getForEntity(
-                    "http://localhost:8085/api/v1.0/market/stock/get/stockPrice/" + company.getCompanyCode(),
+                    "https://stockestockmarket.azurewebsites.net/api/v1.0/market/stock/get/stockPrice/" + company.getCompanyCode(),
                     StockResponse.class);
             StockResponseDTO stock = new StockResponseDTO();
             if (stockResponse.getBody().getData() != null) {
@@ -104,7 +104,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = companyRepository.findByCompanyCode(companyCode);
         if (company != null) {
             companyRepository.delete(company);
-            restTemplate.delete("http://localhost:8085/api/v1.0/market/stock/delete" + companyCode);
+            restTemplate.delete("https://stockestockmarket.azurewebsites.net/api/v1.0/market/stock/delete" + companyCode);
         }
     }
 
